@@ -1,0 +1,47 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+     - /logs/mcs.log
+    fields:
+      service: mcs
+    fields_under_root: true
+    overwrite_keys: true
+    multiline.pattern: '^[[:space:]]+(at|\.{3})\b|^Caused by:|(^[a-zA-Z\]\;\}\{ ]|^\s*$)'
+    multiline.negate: false
+    multiline.match: after
+
+  - type: log
+    enabled: true
+    paths:
+     - /logs/pollers/polestar.log
+    fields:
+      service: pollers
+      poller: polestar
+    fields_under_root: true
+    overwrite_keys: true
+    multiline.pattern: '^[[:space:]]+(at|\.{3})\b|^Caused by:|(^[a-zA-Z\]\;\}\{} ]|^\s*$)'
+    multiline.negate: false
+    multiline.match: after
+
+  - type: log
+    enabled: true
+    paths:
+     - /logs/pollers/BlueSkyNetworks-CLS-AUS.log
+    fields:
+      service: pollers
+      poller: CLS-BlueSkyNetworks
+    fields_under_root: true
+    overwrite_keys: true
+    multiline.pattern: '^[[:space:]]+(at|\.{3})\b|^Caused by:|(^[a-zA-Z\]\;\}\{ ]|^\s*$)'
+    multiline.negate: false
+    multiline.match: after
+
+
+output.logstash:
+  hosts: ["logstash:5044"]
+
+setup:
+  kibana:
+    host: "kibana:5601"
+  template.overwrite: true  

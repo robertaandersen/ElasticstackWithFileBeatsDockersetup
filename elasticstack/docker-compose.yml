@@ -1,0 +1,41 @@
+version: "3.5"
+
+services: 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    ports:
+       - 9200:9200
+    expose: 
+        - 9200
+    environment: 
+      - discovery.type=single-node
+    networks:
+      - elasticnet    
+  
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.5.0
+    depends_on: 
+      - elasticsearch
+    ports:
+      - 5044:5044
+    expose:
+      - 5044
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro    
+    networks:
+      - elasticnet    
+    
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.5.0
+    depends_on:
+      - logstash
+    ports: 
+      - 5601:5601
+    networks:
+      - elasticnet    
+    
+
+networks:
+  elasticnet:
+    name: elasticnet
+    driver: bridge
