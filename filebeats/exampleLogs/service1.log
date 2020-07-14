@@ -1,0 +1,6 @@
+2020-07-10 11:06:41,170 INFO org.ehcache.core.EhcacheManager [SpringContextShutdownHook] Cache 'default-update-timestamps-region' removed from Eh107InternalCacheManager.
+2020-07-10 11:06:33,641 DEBUG org.springframework.security.web.access.ExceptionTranslationFilter [http-nio-8080-exec-2] Chain processed normally
+2020-07-10 11:06:33,641 DEBUG org.springframework.security.web.access.ExceptionTranslationFilter [http-nio-8080-exec-7] Chain processed normally
+2020-07-10 11:06:33,641 DEBUG org.springframework.security.web.access.ExceptionTranslationFilter [http-nio-8080-exec-1] Chain processed normally
+2020-07-10 11:06:33,641 DEBUG org.springframework.security.web.context.SecurityContextPersistenceFilter [http-nio-8080-exec-2] SecurityContextHolder now cleared, as request processing completed
+2020-08-14 11:06:33,641 DEBUG org.springframework.security.web.access.ExceptionTranslationFilter [http-nio-8080-exec-1] Chain processed normally

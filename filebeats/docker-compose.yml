@@ -3,6 +3,13 @@ version: "3.5"
 services: 
   filebeats:
     image: docker.elastic.co/beats/filebeat:7.5.0
+    container_name: filebeats
     volumes: 
       - ./conf/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro
-      - /Users/robertreynisson/repos/logger:/logs/ #change this to whatever logs you want to map to the filebeat docker and refer to this drive in the filebeat config file (filebeat.docker.yml)
+      - ./exampleLogs:/logs/ #change this to whatever logs you want to map to the filebeat docker and refer to this drive in the filebeat config file (filebeat.docker.yml)
+    networks: 
+      - elasticnet
+
+networks:
+  elasticnet:
+    name: elasticnet    

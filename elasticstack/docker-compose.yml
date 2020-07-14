@@ -3,6 +3,7 @@ version: "3.5"
 services: 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    container_name: elasticsearch
     ports:
        - 9200:9200
     expose: 
@@ -14,6 +15,7 @@ services:
   
   logstash:
     image: docker.elastic.co/logstash/logstash:7.5.0
+    container_name: logstash
     depends_on: 
       - elasticsearch
     ports:
@@ -27,6 +29,7 @@ services:
     
   kibana:
     image: docker.elastic.co/kibana/kibana:7.5.0
+    container_name: kibana
     depends_on:
       - logstash
     ports: 
